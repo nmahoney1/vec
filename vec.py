@@ -31,7 +31,17 @@ class Vec:
     def add(u, v):
         return Vec(u.D, {d:u.getitem(d) + v.getitem(d) for d in u.D})
         
-            
+    def neg(v):
+        return Vec(v.D, {d:-v.getitem(d) for d in v.D})      
+        
+    def list_dot(u, v): 
+        return sum([v.getitem(d) * u.getitem(d) for d in v.D])
+        #def list_dot(u, v): return sum([u[i]*v[i] for i in range(len(u))])
+        #def list_dot(u, v): return sum([a*b for (a,b) in zip(u,v)])
+    
+    def dot_product_list(needle, haystack):
+        s = len(needle)
+        return [needle.list_dot(haystack[i:i+s]) for i in range(len(haystack)-s)]
         
 v = Vec({'A','B','C'}, {'A':1})
 
